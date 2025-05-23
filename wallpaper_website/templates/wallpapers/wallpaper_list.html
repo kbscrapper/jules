@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>Wallpapers</h1>
+    {% for wallpaper_item in wallpapers %}
+        <h2>{{ wallpaper_item.title }}</h2>
+        {% if wallpaper_item.image %}
+            <img src="{{ wallpaper_item.image.url }}" alt="{{ wallpaper_item.title }}">
+        {% endif %}
+    {% endfor %}
+{% endblock %}

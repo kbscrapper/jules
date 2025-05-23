@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>{{ wallpaper.title }}</h1>
+    <p>{{ wallpaper.description }}</p>
+    {% if wallpaper.image %}
+        <img src="{{ wallpaper.image.url }}" alt="{{ wallpaper.title }}">
+    {% endif %}
+    <p>Uploaded: {{ wallpaper.uploaded_at|date:"F d, Y" }}</p>
+    {% if wallpaper.tags.all %}
+        <div class="tags">
+            Tags:
+            {% for tag_item in wallpaper.tags.all %}
+                <span>{{ tag_item.name }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
