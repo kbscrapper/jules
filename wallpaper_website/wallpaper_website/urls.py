@@ -16,8 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include # Make sure include is imported
+from django.conf import settings # Add this import
+from django.conf.urls.static import static # Add this import
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('wallpapers.urls')), # Include the app's URLs
 ]
+
+if settings.DEBUG: # Add this block
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
